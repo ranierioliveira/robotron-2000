@@ -1,17 +1,16 @@
-const braco = document.querySelector('#braco');
-const controle = document.querySelectorAll('.controle-ajuste');
+const controle = document.querySelectorAll('[data-controle]');
 
 controle.forEach((elemento) => {
     elemento.addEventListener('click', (evento) => {
-        manipulaDados(evento.target.textContent);
-        console.log(evento.target.parentNode)
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode);
     })
 })
 
-function manipulaDados(operacao){
+function manipulaDados(operacao, controle){
+    const peca = controle.querySelector('[data-contador]');
     if(operacao === '-'){
-        braco.value = Number(braco.value) - 1;
+        peca.value = Number(peca.value) - 1;
     } else {
-        braco.value = Number(braco.value) + 1;
-    }
+        peca.value = Number(peca.value) + 1;
+    } 
 }
